@@ -16,7 +16,7 @@
 
 import Foundation
 
-internal class PeopleService: NSObject {
+public class PeopleService: NSObject {
     let mode: Mode = .full
     let api: APIService = APIService.shared
     
