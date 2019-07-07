@@ -15,7 +15,7 @@
 //
 
 import Foundation
-
+/*
 public class Film: NSObject {
     var title: String
     var episodeId: Int
@@ -49,3 +49,4 @@ public class FilmJSON: NSObject {
     var created: String
     var edited: String
 }
+*/

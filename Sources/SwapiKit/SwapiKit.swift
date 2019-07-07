@@ -17,5 +17,5 @@
 import Foundation
 
 class SwapiKit: NSObject {
-    var text = "Hello, World!"
+    let peopleService = PeopleService()
 }
