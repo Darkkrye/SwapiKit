@@ -20,13 +20,21 @@ public class PeopleService: NSObject {
     let mode: Mode = .full
     let api: APIService = APIService.shared
     
-    public func getPeoples(completionHandler: @escaping ((_ peoples: Any) -> Void)) {
+    public func getPeoples(completionHandler: @escaping ((_ peoples: Array<PeopleJSON>) -> Void)) {
         let route = self.api.ENDPOINT + EndpointRoutes.PEOPLE.rawValue
         
         self.api.getRequest(route: route, headers: self.api.headers) { (statusCode, data) in
             guard let d = data, statusCode < 300 else { return }
             
-            completionHandler(d)
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: d, options: .prettyPrinted)
+                let decoder = JSONDecoder()
+                let peoples = try decoder.decode([PeopleJSON].self, from: jsonData)
+            
+                completionHandler(peoples)
+            } catch {
+            
+            }
         }
     }
 }

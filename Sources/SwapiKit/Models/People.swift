@@ -35,7 +35,7 @@ public class People: NSObject {
     var edited: String
 }*/
 
-public class PeopleJSON: NSObject {
+public class PeopleJSON: NSObject, Decodable {
     var name: String
     var birth_year: String
     var eye_color: String
