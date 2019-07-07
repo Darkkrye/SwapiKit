@@ -29,12 +29,26 @@ public class PeopleService: NSObject {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: d, options: .prettyPrinted)
                 let decoder = JSONDecoder()
-                let peoples = try decoder.decode([PeopleJSON].self, from: jsonData)
+                let peopleResult = try decoder.decode(PeopleResult.self, from: jsonData)
             
-                completionHandler(peoples)
+                completionHandler(peopleResult.results)
             } catch {
             
             }
         }
+    }
+}
+
+internal class PeopleResult: NSObject, Decodable {
+    var count: String
+    var next: String?
+    var previous: String?
+    var results: [PeopleJSON]
+    
+    init(count: String, next: String?, previous: String?, results: [PeopleJSON]) {
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
     }
 }
