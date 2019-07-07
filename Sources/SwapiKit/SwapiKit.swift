@@ -16,6 +16,6 @@
 
 import Foundation
 
-class SwapiKit: NSObject {
+public class SwapiKit: NSObject {
     let peopleService = PeopleService()
 }
